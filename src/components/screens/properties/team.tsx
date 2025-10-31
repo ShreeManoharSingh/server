@@ -85,7 +85,7 @@ export default function Team() {
             {/* Profile */}
             <div className="relative w-32 h-32 mx-auto rounded-full overflow-hidden shadow-xl ring-4 ring-purple-300/60">
               <Image
-                src={`${t.img}?w=300`}
+                src={t.img}
                 alt={t.name}
                 fill
                 className="object-cover"
@@ -108,3 +108,4 @@ export default function Team() {
     </section>
   );
 }
+  

@@ -1,15 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
-  const links = ["Home", "Projects", "About", "Contact"];
+  const [open, setOpen] = useState<boolean>(false);
+  const links: string[] = ["Home", "Projects", "About", "Contact"];
 
   const { scrollY } = useScroll();
-  const navBg = useTransform(
+  const navBg: MotionValue<string> = useTransform(
     scrollY,
     [0, 80],
     ["rgba(255,255,255,1)", "rgba(255,255,255,1)"]
@@ -33,7 +33,7 @@ export default function Navbar() {
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex gap-8 font-medium">
-          {links.map((link, i) => (
+          {links.map((link: string, i: number) => (
             <li key={i} className="relative group cursor-pointer text-gray-800 dark:text-gray-200">
               {link}
               <span className="absolute left-0 bottom-[-4px] h-[2px] w-0 bg-gradient-to-r from-sky-500 to-purple-500 group-hover:w-full transition-all duration-300 rounded-full"></span>
@@ -43,7 +43,7 @@ export default function Navbar() {
 
         {/* Mobile Toggle */}
         <button 
-          onClick={() => setOpen(!open)}
+          onClick={() => setOpen((prev) => !prev)}
           className="md:hidden text-gray-900 dark:text-white"
         >
           {open ? <X size={26}/> : <Menu size={26}/>}
@@ -58,7 +58,7 @@ export default function Navbar() {
           className="md:hidden bg-white/90 dark:bg-black/90 backdrop-blur-xl border-t border-white/20"
         >
           <ul className="flex flex-col items-center gap-6 py-6 font-semibold">
-            {links.map((link, i) => (
+            {links.map((link: string, i: number) => (
               <motion.li
                 key={i}
                 whileTap={{ scale: 0.95 }}

@@ -1,9 +1,14 @@
 "use client";
+
 import { motion } from "framer-motion";
 import { Facebook, Instagram, Linkedin, Phone, Mail } from "lucide-react";
 import Link from "next/link";
+import { Icon as LucideIcon } from "lucide-react"; // Icon type import
 
 export default function Footer() {
+  const socialIcons: LucideIcon[] = [Facebook, Instagram, Linkedin];
+  const quickLinks: string[] = ["Home", "Properties", "Testimonials", "Team", "Contact"];
+
   return (
     <footer className="bg-gradient-to-r from-blue-700 to-purple-700 text-white pt-16 pb-8">
       <motion.div
@@ -23,7 +28,7 @@ export default function Footer() {
 
           {/* Social Icons */}
           <div className="flex gap-4 mt-5">
-            {[Facebook, Instagram, Linkedin].map((Icon, i) => (
+            {socialIcons.map((Icon, i: number) => (
               <motion.a
                 key={i}
                 href="#"
@@ -40,7 +45,7 @@ export default function Footer() {
         <div className="text-sm">
           <h3 className="font-semibold mb-3 text-white">Quick Links</h3>
           <ul className="space-y-2">
-            {["Home", "Properties", "Testimonials", "Team", "Contact"].map((item) => (
+            {quickLinks.map((item: string) => (
               <li key={item}>
                 <Link
                   href="#"

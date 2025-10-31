@@ -2,22 +2,29 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { Variants } from "framer-motion";
+
+interface Project {
+  name: string;
+  location: string;
+  img: string;
+}
 
 export default function Properties() {
-  const projects = [
+  const projects: Project[] = [
     {
       name: "Uday Heights",
       location: "Mumbai",
-      img: "https://images.unsplash.com/photo-1502005097973-6a7082348e28"
+      img: "https://images.unsplash.com/photo-1502005097973-6a7082348e28",
     },
     {
       name: "Uday Residency",
       location: "Pune",
-      img: "https://images.unsplash.com/photo-1502005097973-6a7082348e28"
+      img: "https://images.unsplash.com/photo-1502005097973-6a7082348e28",
     },
   ];
 
-  const cardVariant = {
+  const cardVariant: Variants = {
     hidden: { opacity: 0, y: 50 },
     show: { opacity: 1, y: 0 },
   };
@@ -44,7 +51,7 @@ export default function Properties() {
       <div className="grid md:grid-cols-2 gap-10">
         {projects.map((p, i) => (
           <motion.div
-            key={i}
+            key={p.name}
             variants={cardVariant}
             initial="hidden"
             whileInView="show"
@@ -63,7 +70,6 @@ export default function Properties() {
                 />
               </motion.div>
 
-              {/* overlay gradient */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent"></div>
             </div>
 

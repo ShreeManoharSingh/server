@@ -3,19 +3,26 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 
+interface TeamMember {
+  name: string;
+  role: string;
+  img: string;
+  desc: string;
+}
+
 export default function Team() {
-  const team = [
+  const team: TeamMember[] = [
     {
       name: "Uday Singh",
       role: "Founder & CEO",
       img: "https://randomuser.me/api/portraits/men/12.jpg",
-      desc: "Leading with vision, integrity, and a passion for architectural excellence."
+      desc: "Leading with vision, integrity, and a passion for architectural excellence.",
     },
     {
       name: "Aisha Khan",
       role: "Chief Architect",
       img: "https://randomuser.me/api/portraits/women/44.jpg",
-      desc: "Designing sustainable, luxury structures with modern engineering precision."
+      desc: "Designing sustainable, luxury structures with modern engineering precision.",
     },
   ];
 
@@ -33,7 +40,7 @@ export default function Team() {
         transition={{ duration: 8, repeat: Infinity, repeatType: "mirror" }}
       />
 
-      {/* Floating Lines */}
+      {/* Floating Line */}
       <motion.div
         className="absolute top-10 left-1/2 w-40 h-40 border-l border-purple-400/40"
         animate={{ y: [0, 40, 0] }}
@@ -55,7 +62,7 @@ export default function Team() {
       <div className="grid md:grid-cols-2 gap-16 max-w-5xl mx-auto relative z-10">
         {team.map((t, i) => (
           <motion.div
-            key={i}
+            key={t.name}
             initial={{ opacity: 0, y: 50, scale: 0.9 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.6, delay: i * 0.2 }}
@@ -77,13 +84,24 @@ export default function Team() {
 
             {/* Profile */}
             <div className="relative w-32 h-32 mx-auto rounded-full overflow-hidden shadow-xl ring-4 ring-purple-300/60">
-              <Image src={`${t.img}?w=300`} alt={t.name} fill className="object-cover" />
+              <Image
+                src={`${t.img}?w=300`}
+                alt={t.name}
+                fill
+                className="object-cover"
+              />
             </div>
 
             {/* Text */}
-            <h3 className="mt-6 text-xl font-bold text-gray-900 dark:text-white">{t.name}</h3>
-            <p className="text-purple-600 dark:text-purple-300 text-sm font-medium mb-2">{t.role}</p>
-            <p className="text-gray-600 dark:text-gray-300 text-sm max-w-sm mx-auto">{t.desc}</p>
+            <h3 className="mt-6 text-xl font-bold text-gray-900 dark:text-white">
+              {t.name}
+            </h3>
+            <p className="text-purple-600 dark:text-purple-300 text-sm font-medium mb-2">
+              {t.role}
+            </p>
+            <p className="text-gray-600 dark:text-gray-300 text-sm max-w-sm mx-auto">
+              {t.desc}
+            </p>
           </motion.div>
         ))}
       </div>

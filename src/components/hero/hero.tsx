@@ -2,8 +2,15 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { FC } from "react";
 
-export default function Hero({ image, title, subtitle }) {
+interface HeroProps {
+  image: string;
+  title: string;
+  subtitle: string;
+}
+
+const Hero: FC<HeroProps> = ({ image, title, subtitle }) => {
   return (
     <section className="relative h-[92vh] w-full flex justify-center items-center overflow-hidden">
       
@@ -23,18 +30,17 @@ export default function Hero({ image, title, subtitle }) {
         />
       </motion.div>
 
-      {/* Overlay + subtle gold shine gradient */}
+      {/* Overlay gradients */}
       <div className="absolute inset-0 bg-black/40" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/80" />
 
-      {/* Center Text */}
+      {/* Center Content */}
       <motion.div
         initial={{ opacity: 0, y: 35 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: "easeOut" }}
         className="relative text-white px-6 text-center"
       >
-        {/* Gold shimmering highlight */}
         <p className="text-sm md:text-base uppercase tracking-[6px] text-yellow-300/90 font-medium mb-3 drop-shadow-lg">
           Luxury • Trust • Excellence
         </p>
@@ -86,4 +92,6 @@ export default function Hero({ image, title, subtitle }) {
       </motion.div>
     </section>
   );
-}
+};
+
+export default Hero;

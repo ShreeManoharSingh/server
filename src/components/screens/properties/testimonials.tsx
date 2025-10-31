@@ -3,8 +3,13 @@
 import { motion } from "framer-motion";
 import { Quote } from "lucide-react";
 
+interface Review {
+  name: string;
+  text: string;
+}
+
 export default function Testimonials() {
-  const reviews = [
+  const reviews: Review[] = [
     {
       name: "Rahul Mehta",
       text: "Amazing quality and service! Their vision for premium housing reflects world-class craftsmanship.",
@@ -44,7 +49,7 @@ export default function Testimonials() {
       <div className="max-w-6xl mx-auto grid gap-10 md:grid-cols-2 px-6 relative z-10">
         {reviews.map((r, i) => (
           <motion.div
-            key={i}
+            key={r.name}
             initial={{ opacity: 0, y: 40, scale: 0.9 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.6, delay: i * 0.2 }}

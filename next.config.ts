@@ -25,14 +25,7 @@ const nextConfig: NextConfig = {
   },
 
   experimental: {
-    turbo: {
-      rules: {
-        "*.jpg": ["image-loader"],
-        "*.jpeg": ["image-loader"],
-        "*.png": ["image-loader"],
-        "*.webp": ["image-loader"],
-      },
-    },
+   
   },
 };
 

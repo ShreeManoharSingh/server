@@ -1,9 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Facebook, Instagram, Linkedin, Phone, Mail } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Phone, Mail, LucideIcon } from "lucide-react";
 import Link from "next/link";
-import { Icon as LucideIcon } from "lucide-react"; // Icon type import
 
 export default function Footer() {
   const socialIcons: LucideIcon[] = [Facebook, Instagram, Linkedin];
@@ -22,7 +21,7 @@ export default function Footer() {
         <div>
           <h2 className="font-bold text-xl mb-2">Uday Real Estate Developers</h2>
           <p className="opacity-90 text-sm leading-relaxed">
-            Crafting premium homes with innovation, quality and trust.  
+            Crafting premium homes with innovation, quality and trust.
             We build spaces that elevate lifestyles and inspire modern living.
           </p>
 
@@ -47,10 +46,7 @@ export default function Footer() {
           <ul className="space-y-2">
             {quickLinks.map((item: string) => (
               <li key={item}>
-                <Link
-                  href="#"
-                  className="opacity-90 hover:opacity-100 hover:underline"
-                >
+                <Link href="#" className="opacity-90 hover:opacity-100 hover:underline">
                   {item}
                 </Link>
               </li>
